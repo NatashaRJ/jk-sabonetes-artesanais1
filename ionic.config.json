@@ -1,0 +1,7 @@
+{
+  "name": "jk-sabonetes-artesanais",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
