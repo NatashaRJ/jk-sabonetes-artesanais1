@@ -1,0 +1,780 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="Logo" />
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="irParaFavoritos()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="irParaSacola()">
+        <ion-icon name="bag-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Barra de pesquisa -->
+  <ion-searchbar [(ngModel)]="filtro" placeholder="Buscar por tipo"></ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+
+
+
+
+
+<!-- Produto 1 (Sabonete de Pitanga Preta) -->
+<ion-col size="12" size-md="6" size-lg="4"
+  *ngIf="'Sabonete de Pitanga Preta'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' }">
+    <ion-img src="../../../assets/pitanga1.jpeg" alt="Sabonete de Pitanga Preta"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Pitanga Preta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Hidratante e Perfumado.</ion-card-content>
+    <ion-card-subtitle>R$ 12,90</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Pitanga Preta') 
+        ? removerFavoritoPorNome('Sabonete de Pitanga Preta') 
+        : adicionarFavorito({ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Pitanga Preta') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' })">
+    <ion-icon slot="start"
+      [name]="
+      isNaSacola({ nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante e Perfumado', valor: 12.90, imagem: '../../../assets/pitanga1.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 2 (Sabonete de Maracuja) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Maracuja'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' }">
+    <ion-img src="../../../assets/maracuja.jpeg" alt="Sabonete de Maracuja"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Maracuja</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Calmante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Maracuja') 
+        ? removerFavoritoPorNome('Sabonete de Maracuja') 
+        : adicionarFavorito({ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Maracuja') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' })">
+    <ion-icon slot="start"
+      [name]="
+      isNaSacola({ nome: 'Sabonete de Maracuja', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/maracuja.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 3 (Sabonete de Açafrão) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Açafrão'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' }">
+    <ion-img src="../../../assets/acafrao7.jpeg" alt="Sabonete de Açafrão"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Açafrão</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Antioxidante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Açafrão') 
+        ? removerFavoritoPorNome('Sabonete de Açafrão') 
+        : adicionarFavorito({ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Açafrão') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' })">
+    <ion-icon slot="start"
+      [name]="
+      isNaSacola({ nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acafrao7.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 4 (Sabonete de Argila Branca) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Argila Branca'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' }">
+    <ion-img src="../../../assets/argilabranca1.jpg" alt="Sabonete de Argila Branca"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Argila Branca</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Argila Branca</ion-card-content>
+    <ion-card-subtitle>R$ 12,90</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Argila Branca') 
+        ? removerFavoritoPorNome('Sabonete de Argila Branca') 
+        : adicionarFavorito({ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Argila Branca') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' })">
+    <ion-icon slot="start" 
+      [name]="isNaSacola({ nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 5 (Sabonete de Dolomita) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Dolomita'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' }">
+    <ion-img src="../../../assets/dolomita.jpeg" alt="Sabonete de Dolomita"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Dolomita</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Clareador</ion-card-content>
+    <ion-card-subtitle>R$ 13,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Dolomita') 
+        ? removerFavoritoPorNome('Sabonete de Dolomita') 
+        : adicionarFavorito({ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Dolomita') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13.00, imagem: '../../../assets/dolomita.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 6 (Sabonete de Camomila) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Camomila'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' }">
+    <ion-img src="../../../assets/camomila1.jpg" alt="Sabonete de Camomila"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Camomila</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Calmante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Camomila') 
+        ? removerFavoritoPorNome('Sabonete de Camomila') 
+        : adicionarFavorito({ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Camomila') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10.00, imagem: '../../../assets/camomila1.jpg' }) ? 'bag' : 'bag-outline'"  
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 7 (Sabonete de Alecrim) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Alecrim'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' }">
+    <ion-img src="../../../assets/alecrim4.jpeg" alt="Sabonete de Alecrim"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Alecrim</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Revitalizante</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Alecrim') 
+        ? removerFavoritoPorNome('Sabonete de Alecrim') 
+        : adicionarFavorito({ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Alecrim') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12.00, imagem: '../../../assets/alecrim4.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 8 (Sabonete de Rosas Brancas) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Rosas Brancas'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' }">
+    <ion-img src="../../../assets/rosasbrancas.jpg" alt="Sabonete de Rosas Brancas"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Rosas Brancas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Perfumado</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Rosas Brancas') 
+        ? removerFavoritoPorNome('Sabonete de Rosas Brancas') 
+        : adicionarFavorito({ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Rosas Brancas') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10.00, imagem: '../../../assets/rosasbrancas.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 9 (Sabonete de Erva Doce) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Erva Doce'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' }">
+    <ion-img src="../../../assets/ervadoce.jpeg" alt="Sabonete de Erva Doce"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Erva Doce</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Refrescante</ion-card-content>
+    <ion-card-subtitle>R$ 11,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Erva Doce') 
+        ? removerFavoritoPorNome('Sabonete de Erva Doce') 
+        : adicionarFavorito({ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Erva Doce') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11.00, imagem: '../../../assets/ervadoce.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 10 (Sabonete de Morango) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Morango'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' }">
+    <ion-img src="../../../assets/morango3.jpeg" alt="Sabonete de Morango"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Morango</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Revitalizante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Morango') 
+        ? removerFavoritoPorNome('Sabonete de Morango') 
+        : adicionarFavorito({ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Morango') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10.00, imagem: '../../../assets/morango3.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 11 (Sabonete de Alecrim com Sal Grosso) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Alecrim com Sal Grosso'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' }">
+    <ion-img src="../../../assets/alecrim.jpeg" alt="Sabonete de Alecrim com Sal Grosso"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Alecrim com Sal Grosso</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Limpeza Energética</ion-card-content>
+    <ion-card-subtitle>R$ 12,90</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Alecrim com Sal Grosso') 
+        ? removerFavoritoPorNome('Sabonete de Alecrim com Sal Grosso') 
+        : adicionarFavorito({ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Alecrim com Sal Grosso') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' })">
+    <ion-icon slot="start" [name]="isNaSacola({ nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 12 (Sabonete de Maracujá com Semente) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Maracujá com Semente'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' }">
+    <ion-img src="../../../assets/maracuja1.jpeg" alt="Sabonete de Maracujá com Semente"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Maracujá com Semente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Esfoliante</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Maracujá com Semente') 
+        ? removerFavoritoPorNome('Sabonete de Maracujá com Semente') 
+        : adicionarFavorito({ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Maracujá com Semente') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' })">
+    <ion-icon slot="start" [name]="isNaSacola({ nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12.00, imagem: '../../../assets/maracuja1.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 13 (Sabonete de Açaí) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Açaí'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' }">
+    <ion-img src="../../../assets/acai.jpeg" alt="Sabonete de Açaí"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Açaí</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Antioxidante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Açaí') 
+        ? removerFavoritoPorNome('Sabonete de Açaí') 
+        : adicionarFavorito({ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Açaí') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' })
+        ? removerSacola({ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' })
+        : adicionarSacola({ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' })">
+    <ion-icon slot="start" [name]="isNaSacola({ nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10.00, imagem: '../../../assets/acai.jpeg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 14 (Sabonete de Café) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Café'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' }">
+    <ion-img src="../../../assets/cafe1.jpg" alt="Sabonete de Café"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Café</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Esfoliante</ion-card-content>
+    <ion-card-subtitle>R$ 13,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Café') 
+        ? removerFavoritoPorNome('Sabonete de Café') 
+        : adicionarFavorito({ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Café') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13.00, imagem: '../../../assets/cafe1.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 15 (Sabonete de Leite de Cabra) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Leite de Cabra'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' }">
+    <ion-img src="../../../assets/leitedecabra1.jpg" alt="Sabonete de Leite de Cabra"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Leite de Cabra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Nutritivo</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Leite de Cabra') 
+        ? removerFavoritoPorNome('Sabonete de Leite de Cabra') 
+        : adicionarFavorito({ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Leite de Cabra') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10.00, imagem: '../../../assets/leitedecabra1.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 16 (Sabonete de Babosa) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Babosa'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' }">
+    <ion-img src="../../../assets/aloevera.jpg" alt="Sabonete de Babosa"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Babosa</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Hidratante</ion-card-content>
+    <ion-card-subtitle>R$ 11,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Babosa') 
+        ? removerFavoritoPorNome('Sabonete de Babosa') 
+        : adicionarFavorito({ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Babosa') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11.00, imagem: '../../../assets/aloevera.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 17 (Sabonete de Chá Verde) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Chá Verde'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' }">
+    <ion-img src="../../../assets/chaverde.jpg" alt="Sabonete de Chá Verde"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Chá Verde</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Detox</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Chá Verde') 
+        ? removerFavoritoPorNome('Sabonete de Chá Verde') 
+        : adicionarFavorito({ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Chá Verde') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12.00, imagem: '../../../assets/chaverde.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 18 (Sabonete de Melancia) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Melancia'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' }">
+    <ion-img src="../../../assets/melancia.jpg" alt="Sabonete de Melancia"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Melancia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Relaxante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Melancia') 
+        ? removerFavoritoPorNome('Sabonete de Melancia') 
+        : adicionarFavorito({ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Melancia') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Melancia', categoria: 'Relaxante', valor: 10.00, imagem: '../../../assets/melancia.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 19 (Sabonete de Coco) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Coco'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' }">
+    <ion-img src="../../../assets/coco.jpg" alt="Sabonete de Coco"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Coco</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Hidratante</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Coco') 
+        ? removerFavoritoPorNome('Sabonete de Coco') 
+        : adicionarFavorito({ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Coco') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/coco.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 20 (Sabonete de Mel) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Mel'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' }">
+    <ion-img src="../../../assets/mel.jpg" alt="Sabonete de Mel"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Mel</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Hidratante</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Mel') 
+        ? removerFavoritoPorNome('Sabonete de Mel') 
+        : adicionarFavorito({ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Mel') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12.00, imagem: '../../../assets/mel.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 21 (Sabonete de Jasmim) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Jasmim'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' }">
+    <ion-img src="../../../assets/jasmim2.jpg" alt="Sabonete de Jasmim"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Jasmim</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Perfumado</ion-card-content>
+    <ion-card-subtitle>R$ 12,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Jasmim') 
+        ? removerFavoritoPorNome('Sabonete de Jasmim') 
+        : adicionarFavorito({ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Jasmim') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12.00, imagem: '../../../assets/jasmim2.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>
+
+<!-- Produto 22 (Sabonete de Eucalipto) -->
+<ion-col size="12" size-md="6" size-lg="4" *ngIf="'Sabonete de Eucalipto'.toLowerCase().includes(filtro?.toLowerCase() || '')">
+  <ion-card [routerLink]="['/produto-detalhe']"
+    [queryParams]="{ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' }">
+    <ion-img src="../../../assets/eucalipto.jpg" alt="Sabonete de Eucalipto"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Sabonete de Eucalipto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>Refrescante</ion-card-content>
+    <ion-card-subtitle>R$ 10,00</ion-card-subtitle>
+  </ion-card>
+
+  <ion-button fill="clear" class="botao-favoritos"
+    (click)="
+      isFavoritoPorNome('Sabonete de Eucalipto') 
+        ? removerFavoritoPorNome('Sabonete de Eucalipto') 
+        : adicionarFavorito({ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' })">
+    <ion-icon slot="start" [name]="isFavoritoPorNome('Sabonete de Eucalipto') ? 'heart' : 'heart-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">FAVORITOS</span>
+  </ion-button>
+
+  <ion-button fill="clear" class="botao-sacola"
+    (click)="
+      isNaSacola({ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' })
+        ? removerSacola({ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' })
+        : adicionarSacola({ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' })">
+    <ion-icon slot="start" [name]="
+        isNaSacola({ nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10.00, imagem: '../../../assets/eucalipto.jpg' }) ? 'bag' : 'bag-outline'"
+      [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+    <span [style.color]="'var(--ion-color-musgo)'" style="margin-left: 4px; font-weight: 500">SACOLA</span>
+  </ion-button>
+</ion-col>

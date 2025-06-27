@@ -1,33 +1,76 @@
-<ion-app>
+<ion-app *ngIf="!mostrarSplash">
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
 
-          @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-          }
-        </ion-list>
+    <!-- Menu lateral -->
+    <ion-menu side="start" menuId="first" contentId="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>
+            <div class="titulo">
+              <ion-icon name="menu-outline" slot="start"></ion-icon>
+              Menu
+            </div>
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-        <ion-list id="labels-list">
-          <ion-list-header>Labels</ion-list-header>
+      <ion-content fullscreen="true" scroll-y="true">
+        <ion-list>
+          <ion-item routerLink="/produtos" (click)="fecharMenu()">
+            <ion-icon name="leaf-outline" slot="start"></ion-icon>
+            <ion-label>Produtos</ion-label>
+          </ion-item>
 
-          @for (label of labels; track label) {
-            <ion-item lines="none">
-              <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
-          }
+          <ion-item routerLink="/favoritos" (click)="fecharMenu()">
+            <ion-icon name="heart-half-outline" slot="start"></ion-icon>
+            <ion-label>Favoritos</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/sacola" (click)="fecharMenu()">
+            <ion-icon name="bag-handle-outline" slot="start"></ion-icon>
+            <ion-label>Sacola</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/sobre" (click)="fecharMenu()">
+            <ion-icon name="document-text-outline" slot="start"></ion-icon>
+            <ion-label>Sobre</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/perfil" (click)="fecharMenu()">
+            <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+            <ion-label>Perfil</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/login" (click)="fecharMenu()">
+            <ion-icon name="log-in-outline" slot="start"></ion-icon>
+            <ion-label>Login</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/central-relacionamento" (click)="fecharMenu()">
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Central de Relacionamento</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/cadastro" (click)="fecharMenu()">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
+            <ion-label>Cadastro</ion-label>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>
+
+    <!-- Splash fake da logo -->
+    <div *ngIf="mostrarSplashAngular" class="fake-splash">
+      <img src="../assets/logo.png" alt="Logo JK Sabonetes" />
+    </div>
+
+    <!-- Texto do splash -->
+    <div *ngIf="mostrarTexto" class="fake-splash-texto">
+      Justo Para Sua Pele
+    </div>
+
+    <!-- Conteúdo principal -->
     <ion-router-outlet id="main-content"></ion-router-outlet>
+
   </ion-split-pane>
 </ion-app>

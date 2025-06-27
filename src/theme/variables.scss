@@ -1,2 +1,145 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  /* Lavanda */
+  --ion-color-lavanda: #b57edc;
+  --ion-color-lavanda-rgb: 181, 126, 220;
+  --ion-color-lavanda-contrast: #ffffff;
+  --ion-color-lavanda-contrast-rgb: 255, 255, 255;
+  --ion-color-lavanda-shade: #9e6bbf;
+  --ion-color-lavanda-tint: #c48de1;
+
+  /* Menta */
+  --ion-color-menta: #98ff98;
+  --ion-color-menta-contrast: #000000;
+  --ion-color-menta-shade: #86df86;
+  --ion-color-menta-tint: #a6ffa6;
+
+  /* Caramelo */
+  --ion-color-caramelo: #d2b48c;
+  --ion-color-caramelo-contrast: #000000;
+  --ion-color-caramelo-shade: #b99e7b;
+  --ion-color-caramelo-tint: #d9be9b;
+
+  /* Rose */
+  --ion-color-rose: #ffc0cb;
+  --ion-color-rose-contrast: #000000;
+  --ion-color-rose-shade: #e0aab3;
+  --ion-color-rose-tint: #ffc8d1;
+
+  /* Azul Céu */
+  --ion-color-azulceu: #87ceeb;
+  --ion-color-azulceu-contrast: #000000;
+  --ion-color-azulceu-shade: #77b5cf;
+  --ion-color-azulceu-tint: #98d6ef;
+
+  /* Rosa */
+  --ion-color-rosa: #ff69b4;
+  --ion-color-rosa-contrast: #ffffff;
+  --ion-color-rosa-shade: #e05da0;
+  --ion-color-rosa-tint: #ff7ebe;
+
+  /* Vermelho */
+  --ion-color-vermelho: #ff0000;
+  --ion-color-vermelho-contrast: #ffffff;
+  --ion-color-vermelho-shade: #e00000;
+  --ion-color-vermelho-tint: #ff1a1a;
+
+  /* Laranja */
+  --ion-color-laranja: #ffa500;
+  --ion-color-laranja-contrast: #000000;
+  --ion-color-laranja-shade: #e09400;
+  --ion-color-laranja-tint: #ffb733;
+
+  /* Amarelo */
+  --ion-color-amarelo: #ffff00;
+  --ion-color-amarelo-contrast: #000000;
+  --ion-color-amarelo-shade: #e0e000;
+  --ion-color-amarelo-tint: #ffff33;
+
+  /* Verde */
+  --ion-color-verde: #00ff00;
+  --ion-color-verde-contrast: #000000;
+  --ion-color-verde-shade: #00e000;
+  --ion-color-verde-tint: #1aff1a;
+
+  /* Azul */
+  --ion-color-azul: #0000ff;
+  --ion-color-azul-contrast: #ffffff;
+  --ion-color-azul-shade: #0000e0;
+  --ion-color-azul-tint: #1a1aff;
+
+  /* Anil */
+  --ion-color-anil: #4b0082;
+  --ion-color-anil-contrast: #ffffff;
+  --ion-color-anil-shade: #420072;
+  --ion-color-anil-tint: #5c1a8f;
+
+  /* Violeta */
+  --ion-color-violeta: #8a2be2;
+  --ion-color-violeta-contrast: #ffffff;
+  --ion-color-violeta-shade: #7926c9;
+  --ion-color-violeta-tint: #9852e5;
+
+  /* Oliva Escura */
+  --ion-color-oliva-escura: #34401a;
+  --ion-color-oliva-escura-contrast: #ffffff;
+  --ion-color-oliva-escura-shade: #2e3917;
+  --ion-color-oliva-escura-tint: #495333;
+
+  /* Musgo */
+  --ion-color-musgo: #64732f;
+  --ion-color-musgo-contrast: #ffffff;
+  --ion-color-musgo-shade: #58672a;
+  --ion-color-musgo-tint: #768546;
+
+  /* Limão Queimado */
+  --ion-color-limao-queimado: #cad959;
+  --ion-color-limao-queimado-contrast: #000000;
+  --ion-color-limao-queimado-shade: #b2c14e;
+  --ion-color-limao-queimado-tint: #d2df6d;
+
+  /* Oliva Claro */
+  --ion-color-oliva-claro: #b4bf5e;
+  --ion-color-oliva-claro-contrast: #000000;
+  --ion-color-oliva-claro-shade: #9ea950;
+  --ion-color-oliva-claro-tint: #c1cb72;
+
+  /* Militar */
+  --ion-color-militar: #252617;
+  --ion-color-militar-contrast: #ffffff;
+  --ion-color-militar-shade: #202212;
+  --ion-color-militar-tint: #3b3c30;
+}
+
+/* Mapa SASS para usar em mixins do Ionic */
+$colors: (
+  primary: #3880ff,
+  secondary: #3dc2ff,
+  tertiary: #5260ff,
+  success: #2dd36f,
+  warning: #ffc409,
+  danger: #eb445a,
+  dark: #222428,
+  medium: #92949c,
+  light: #f4f5f8,
+
+  vermelho: var(--ion-color-vermelho),
+  laranja: var(--ion-color-laranja),
+  amarelo: var(--ion-color-amarelo),
+  verde: var(--ion-color-verde),
+  azul: var(--ion-color-azul),
+  anil: var(--ion-color-anil),
+  violeta: var(--ion-color-violeta),
+
+  lavanda: var(--ion-color-lavanda),
+  menta: var(--ion-color-menta),
+  caramelo: var(--ion-color-caramelo),
+  rose: var(--ion-color-rose),
+  azulceu: var(--ion-color-azulceu),
+  rosa: var(--ion-color-rosa),
+
+  oliva-escura: var(--ion-color-oliva-escura),
+  musgo: var(--ion-color-musgo),
+  limao-queimado: var(--ion-color-limao-queimado),
+  oliva-claro: var(--ion-color-oliva-claro),
+  militar: var(--ion-color-militar),
+);

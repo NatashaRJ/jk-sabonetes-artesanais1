@@ -1,0 +1,257 @@
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  perspective: 800px;
+}
+
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+
+/* ANIMAÇÕES */
+@keyframes girarLogo {
+  0% {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+
+
+ion-header {
+  ion-toolbar {
+    background: #cad959;
+    --border-color: transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+
+    ion-buttons[slot="end"] ion-button {
+      color: #252617;
+    }
+  }
+}
+
+.titulo h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0 20px;
+  color: #252617;
+  text-shadow: 1px 1px 1px #b4bf5e;
+  animation: slideDown 0.6s ease-out;
+}
+
+ion-list {
+  ion-item {
+    border-radius: 10px;
+    margin-bottom: 12px;
+    --background: #cad959;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: perspective(800px) rotateY(0deg);
+    transition: transform 0.4s;
+
+    &:hover {
+      transform: perspective(800px) rotateY(3deg) scale(1.01);
+    }
+
+
+
+ion-thumbnail {
+  width: 80px;
+  height: 80px;
+  display: block;
+}
+
+
+    ion-thumbnail img {
+     
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;   /* Mantém quadrado */
+  width: 80px;          /* Aumenta largura */
+  height: auto;          /* Mantém proporcional se quiser */
+  object-fit: cover;     /* Preenche quadrado */
+  border: 3px solid #34401a;
+}
+    }
+
+    ion-label {
+      h2 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 3px 3px 2px #252617;
+
+  animation: zoom-pequeno 3s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+      p {
+        margin: 2px 0;
+        font-size: 0.9rem;
+        color: #252617;
+        text-align: center;
+      }
+    }
+
+    ion-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+
+      ion-button {
+        --color: #34401a;
+      }
+    }
+  }
+
+
+ion-card {
+  margin-top: 16px;
+  border-radius: 12px;
+  background: #b4bf5e;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.7s ease;
+
+  h2 {
+    margin: 5px 0;
+    color: #34401a;
+  }
+
+  .frete-gratis {
+    color: #34401a;
+    margin-top: 8px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .entrega {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+   
+
+    ion-card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #34401a;
+      text-align: center;
+    }
+  }
+}
+
+ion-item {
+  border-radius: 8px;
+  margin: 8px 0;
+  --background: #f5f5f5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-input {
+  font-size: 0.9rem;
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: #cad959;
+    padding: 10px;
+
+    ion-button {
+      --background: #64732f;
+      --color: #cad959;
+      font-weight: bold;
+      border-radius: 10px;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: scale(1);
+      transition: transform 0.3s ease;
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+
+
+/* ================================
+   Animações
+================================ */
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.entrega-estimada {
+  color: white;                 /* Cor do texto */
+  background-color: #34401a;    /* Cor de fundo (verde musgo) */
+  font-weight: bold;            /* Negrito */
+  border: 2px solid #34401a;    /* Borda da mesma cor do fundo */
+  border-radius: 8px;           /* Cantos arredondados */
+  padding: 8px 12px;            /* Espaçamento interno */
+  display: inline-block;        /* Para ajustar o tamanho ao conteúdo */
+  text-align: center;
+}
+
+.mensagem-vazia {
+  text-align:center;
+  color: #34401a;
+}

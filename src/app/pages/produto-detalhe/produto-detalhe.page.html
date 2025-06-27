@@ -1,0 +1,346 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+<ion-back-button defaultHref="/"></ion-back-button>    
+    </ion-buttons>
+
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="Logo" />
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="irParaFavoritos()" aria-label="Favoritos">
+        <ion-icon [name]="favorito ? 'heart' : 'heart-outline'" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="irParaSacola()" aria-label="Sacola">
+        <ion-icon name="bag-outline" slot="icon-only"></ion-icon>
+        <ion-badge *ngIf="quantidadeNaSacola > 0" color="danger" class="sacola-badge">
+          {{ quantidadeNaSacola }}
+        </ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="produto-card">
+    <img [src]="produto.imagem" [alt]="'Sabonete de ' + produto.nome" />
+
+    <ion-card-header>
+      <ion-card-title>{{ produto.nome }}</ion-card-title>
+      <ion-card-subtitle class="card-sub-com-acoes">
+        {{ produto.categoria }}
+        <ion-buttons class="botoes-sub">
+          <ion-button fill="clear" size="small" (click)="favoritar()">
+            <ion-icon [name]="favorito ? 'heart' : 'heart-outline'"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small" (click)="compartilhar()">
+            <ion-icon name="share-social-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="avaliacoes">
+        <ng-container *ngFor="let estrela of [1, 2, 3, 4, 5]; let i = index">
+          <ion-icon [name]="i < avaliacaoSelecionada ? 'star' : 'star-outline'" (click)="selecionarEstrelas(i + 1)"
+            color="warning" style="cursor: pointer; font-size: 1.4em;">
+          </ion-icon>
+        </ng-container>
+
+        <a [routerLink]="['/avaliacoes']"
+          [queryParams]="{ produto: produto.nome, avaliacao: avaliacaoSelecionada, comentario: novoComentario }">Ver
+          avaliações</a>
+      </div>
+
+      <ion-accordion-group>
+        <ion-accordion value="descricao">
+          <ion-item slot="header">
+
+
+            <ion-label>Descrição</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Pitanga Preta'">
+              Fragrância frutada e marcante da pitanga preta.
+            </ng-container>
+
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Maracujá'">
+              Sabonete com aroma tropical e suave, inspirado na fruta do maracujá.
+            </ng-container>
+
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Açafrão'">
+              Sabonete de cor vibrante com toque terroso e natural.
+            </ng-container>
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Dolomita'">
+              Enriquecido com minerais naturais, de toque leve e delicado.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Argila Branca'">
+              Formulação suave e purificante com textura cremosa.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Camomila'">
+              Aroma floral leve, com ação calmante natural.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Alecrim'">
+              Sabonete de aroma herbal intenso e revigorante.
+            </ng-container>
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Rosas Brancas'">
+              Aroma floral e sofisticado com toque romântico.
+            </ng-container>
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Erva Doce'">
+              Sabonete suave com fragrância fresca e herbal.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Morango'">
+              Aroma doce e envolvente que lembra frutas frescas.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Alecrim com Sal Grosso'">
+              Combinação herbal com textura esfoliante natural.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Maracujá com Semente'">
+              Combina aroma relaxante com esfoliação suave.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Açaí'">
+              Inspirado na fruta amazônica, com aroma vibrante.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Café'">
+              Aroma marcante com textura granulada natural.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Leite de Cabra'">
+              Cremoso e nutritivo, com perfume delicado.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Babosa'">
+              Toque refrescante e aroma leve, ideal para cuidados
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Chá Verde'">
+              Fragrância herbal leve com sensação de frescor.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Melancia'">
+              Aroma refrescante e frutado, ideal para dias quentes.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Coco'">
+              Suave e tropical, com toque cremoso natural.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Mel'">
+              Aroma adocicado e natural com toque nutritivo.
+            </ng-container>
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Jasmim'">
+              Floral delicado e elegante, com fragrância envolvente.
+            </ng-container>
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Eucalipto'">
+              Aroma intenso e refrescante, com toque herbal.
+            </ng-container>
+
+
+
+
+
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="beneficios">
+
+          <ion-item slot="header">
+
+
+            <ion-label>Benefícios</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Pitanga Preta'">
+
+              Tonifica a pele e proporciona frescor com aroma exótico.
+
+            </ng-container>
+            <ng-container *ngIf="produto.nome === 'Sabonete de Maracujá'">
+              Acalma a pele e os sentidos, ideal para momentos de relaxamento.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Açafrão'">
+              Antioxidante, auxilia no controle da oleosidade e combate à acne.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Dolomita'">
+              Regenera e fortalece a pele, melhorando sua aparência
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Argila Branca'">
+              Clareia, suaviza e revitaliza peles sensíveis.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Camomila'">
+              Alivia irritações e proporciona sensação de conforto.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Alecrim'">
+              Estimula a circulação e tem efeito refrescante.
+            </ng-container>
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Rosas Brancas'">
+              Hidrata, suaviza e perfuma delicadamente a pele.
+            </ng-container>
+
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Erva Doce'">
+              Acalma a pele e ajuda a aliviar o estresse.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Morango'">
+              Hidrata suavemente e perfuma com um toque juvenil.
+
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Alecrim com Sal Grosso'">
+              Remove células mortas, purifica e energiza.
+            </ng-container>
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Maracujá com Semente'">
+              Estimula a renovação celular e refresca a pele.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Açaí'">
+              Rico em antioxidantes, ajuda a manter a pele jovem e revitalizada.
+
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Café'">
+              Esfoliante, ativa a circulação e reduz sinais de fadiga.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Leite de Cabra'">
+              Hidrata profundamente e suaviza peles secas e sensíveis.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Babosa'">
+              Cicatrizante, hidratante e calmante para a pele.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Chá Verde'">
+              Tonifica, tem ação antioxidante e auxilia no controle da oleosidade.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Melancia'">
+              Hidrata e refresca, proporcionando leveza e suavidade.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Coco'">
+              Nutre e hidrata profundamente, deixando a pele macia.
+            </ng-container>
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Mel'">
+              Hidratação intensa, ideal para peles secas e sem viço.
+
+            </ng-container>
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Jasmim'">
+              Hidrata e proporciona sensação de bem-estar.
+            </ng-container>
+
+
+
+            <ng-container *ngIf="produto.nome === 'Sabonete de Eucalipto'">
+              Descongestionante e revigorante, ideal para relaxar e renovar.
+            </ng-container>
+
+
+
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+
+
+      <ion-footer class="footer-sacola">
+        <ion-toolbar>
+          <ion-item lines="none">
+            <ion-label>Quantidade:</ion-label>
+            <ion-buttons>
+              <ion-button size="small" (click)="diminuir()">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+              <ion-label>{{ quantidade }}</ion-label>
+              <ion-button size="small" (click)="aumentar()">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+
+          <ion-button expand="block" color="musgo" (click)="adicionarSacola()">
+            Adicionar à sacola
+          </ion-button>
+
+          <ion-button expand="block" color="danger" *ngIf="quantidadeNaSacola > 0" (click)="removerDaSacola()">
+            Remover da sacola
+          </ion-button>
+        </ion-toolbar>
+      </ion-footer>

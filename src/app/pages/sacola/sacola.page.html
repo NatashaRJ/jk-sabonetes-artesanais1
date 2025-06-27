@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="JK Sabonetes Artesanais" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="irParaFavoritos()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="titulo">
+    <h1>Minha sacola</h1>
+  </div>
+
+  <ng-template #vazio>
+    <p class="mensagem-vazia">A sacola está vazia 😭</p>
+  </ng-template>
+
+  <ion-list *ngIf="sacola.length > 0; else vazio">
+    <ion-item *ngFor="let produto of sacola" lines="none">
+      <ion-thumbnail slot="start">
+        <img [src]="produto.imagem || 'assets/img/placeholder.png'" />
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{ produto.nome }}</h2>
+        <p>{{ produto.categoria }}</p>
+        <p>R$ {{ produto.valor }} x {{ produto.quantidade }}</p>
+        <p><strong>Subtotal: R$ {{ produto.valor * produto.quantidade! | number:'1.2-2' }}</strong></p>
+      </ion-label>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="alterarQuantidade(produto, -1)">
+          <ion-icon slot="icon-only" name="remove"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="alterarQuantidade(produto, 1)">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" color="danger" (click)="removerSacola(produto)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="sacola.length > 0" class="ion-padding">
+    <ion-card-content>
+      <h2>Produtos: <strong>R$ {{ calcularTotal() | number:'1.2-2' }}</strong></h2>
+      <h2>Frete: <strong>R$ {{ getFrete() | number:'1.2-2' }}</strong></h2>
+      <h2>Total: <strong>R$ {{ getTotalGeral() | number:'1.2-2' }}</strong></h2>
+
+      <p *ngIf="cep && calcularTotal() >= 50 && getFrete() === 0" class="frete-gratis">
+        🎉 Você ganhou frete grátis!
+      </p>
+
+     <p *ngIf="diasEntrega !== null" class="entrega-estimada">
+  📦 Entrega estimada em {{ diasEntrega }} dia(s) úteis
+</p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="sacola.length > 0" class="ion-padding">
+    <ion-card-header>
+      <div class="entrega">
+        <ion-card-title>Endereço para entrega</ion-card-title>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">CEP:</ion-label>
+        <ion-input type="text" [(ngModel)]="cep" (ionChange)="buscarEndereco()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Rua:</ion-label>
+        <ion-input [(ngModel)]="rua"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Bairro:</ion-label>
+        <ion-input [(ngModel)]="bairro"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nº:</ion-label>
+        <ion-input [(ngModel)]="numeroCasa"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Complemento:</ion-label>
+        <ion-input [(ngModel)]="complemento"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cidade:</ion-label>
+        <ion-input [(ngModel)]="cidade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">UF:</ion-label>
+        <ion-input [(ngModel)]="uf"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer *ngIf="sacola.length > 0">
+  <ion-toolbar>
+    <ion-button expand="full" (click)="finalizarCompra()">
+      FINALIZAR COMPRA
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

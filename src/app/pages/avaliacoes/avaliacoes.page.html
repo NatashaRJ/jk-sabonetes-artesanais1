@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="Logo" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Avaliação</h1>
+
+  <!-- 🔥 Lista de avaliações -->
+  <ion-list>
+    <ion-item *ngFor="let avaliacao of avaliacoes; let idx = index">
+      <ion-label>
+        <h2>{{ avaliacao.usuario }}</h2>
+        <div class="avaliacao">
+          <ng-container *ngFor="let estrela of [1, 2, 3, 4, 5]; let i = index">
+            <ion-icon
+              [name]="i < avaliacao.estrelas ? 'star' : 'star-outline'"
+              color="warning"
+              style="font-size: 1.5em;">
+            </ion-icon>
+          </ng-container>
+        </div>
+        <p>{{ avaliacao.comentario }}</p>
+      </ion-label>
+
+      <!-- 🔥 Botão de excluir -->
+      <ion-button
+        slot="end"
+        fill="solid"
+        shape="round"
+        size="small"
+        class="btn-trash"
+        (click)="excluirComentario(idx)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- 🔥 Formulário de nova avaliação -->
+  <ion-item>
+    <ion-label position="floating">Seu comentário</ion-label>
+    <ion-input
+      [(ngModel)]="novoComentario"
+      placeholder="Deixe sua avaliação">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="enviarComentario()">
+    Enviar Avaliação
+  </ion-button>
+</ion-content>

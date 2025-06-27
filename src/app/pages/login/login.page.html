@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="JK Sabonetes Artesanais" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content class="ion-padding">
+  <div class="titulo">
+    <h1 *ngIf="!isCreatingAccount">Login</h1>
+    <h1 *ngIf="isCreatingAccount">Criar Conta</h1>
+  </div>
+
+  <!-- E-mail -->
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input [(ngModel)]="email" type="email"></ion-input>
+  </ion-item>
+
+  <!-- Senha com botão mostrar/ocultar -->
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input [type]="mostrarSenha ? 'text' : 'password'" [(ngModel)]="password"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" size="small" (click)="mostrarSenha = !mostrarSenha">
+        <ion-icon [name]="mostrarSenha ? 'eye-off' : 'eye'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <!-- Lembrar-me -->
+  <ion-item lines="none">
+    <ion-checkbox slot="start" [(ngModel)]="lembrar"></ion-checkbox>
+    <ion-label class="ion-padding-start">Lembrar-me</ion-label>
+  </ion-item>
+
+  <div class="conjunto">
+  <!-- Botão Entrar ou Cadastrar -->
+  <ion-button expand="full" (click)="isCreatingAccount ? register() : login()">
+    {{ isCreatingAccount ? 'Cadastrar' : 'Entrar' }}
+  </ion-button>
+
+
+  <!-- Esqueci minha senha -->
+  <ion-button expand="full" fill="clear" (click)="esqueciSenha()">
+    Esqueci minha senha
+  </ion-button>
+</div>
+
+</ion-content>

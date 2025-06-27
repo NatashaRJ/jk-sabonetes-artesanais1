@@ -1,0 +1,174 @@
+/* ---------- GERAL ---------- */
+ion-content {
+  animation: aparecer 1s ease-in;
+  background-color: #fff;
+  transform-style: preserve-3d;
+}
+
+/* ---------- TÍTULO PRINCIPAL ---------- */
+.titulo h1 {
+  font-size: 2rem;
+  color: #64732f;
+  /* musgo */
+  margin-bottom: 16px;
+  animation: descer 0.6s ease-out;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+ text-align: center;
+}
+
+/* Centraliza o logo com perspectiva 3D */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  perspective: 800px;
+}
+
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+/* ---------- CARDS ---------- */
+ion-card {
+  background: #b4bf5e;
+  /* oliva claro */
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  margin-bottom: 20px;
+  padding: 6px;
+}
+
+ion-card:hover {
+  transform: rotateX(4deg) rotateY(-2deg) scale(1.01);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- TITULOS DOS CARDS ---------- */
+ion-card-title {
+  font-size: 1.3rem;
+  color: #34401a;
+  /* oliva escura */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+   animation: zoom-pequeno 2s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+/* ---------- CONTEÚDO DOS CARDS ---------- */
+ion-card-content {
+  font-size: 1rem;
+  color: black;
+  /* militar */
+  line-height: 1.6;
+  text-align: center;
+}
+
+.valor {
+  font-size: 1rem;
+  color: #252617;
+  /* militar */
+  line-height: 1.6;
+  text-align: left;
+}
+
+
+
+/* ---------- ÍCONES ---------- */
+.icon,
+ion-icon {
+  font-size: 24px;
+  color: #64732f;
+  /* limão queimado */
+  margin-top: 12px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+ion-icon:hover {
+  transform: scale(1.2) rotate(8deg);
+}
+
+/* ---------- LISTA DE VALORES ---------- */
+ion-card-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 12px;
+ 
+}
+
+ion-card-content li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34401a;
+ 
+}
+
+ion-card-content li ion-icon {
+  margin-right: 8px;
+  color: #64732f;
+  /* musgo */
+  
+}
+
+/* ---------- ANIMAÇÕES ---------- */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateZ(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes descer {
+  from {
+    transform: translateY(-30px) rotateX(-10deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes girarLogo {
+  from {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}

@@ -1,0 +1,382 @@
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  perspective: 800px;
+}
+
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+@keyframes girarLogo {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Título com entrada animada */
+.titulo {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeInDown 0.7s ease;
+}
+
+ion-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 60px;
+
+  ion-buttons[slot="start"],
+  ion-buttons[slot="end"] {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+  }
+
+  ion-buttons[slot="start"] {
+    left: 0;
+  }
+
+  ion-buttons[slot="end"] {
+    right: 0;
+  }
+}
+
+ion-content.produtos-page {
+  --background: #f9f9f9;
+  padding: 16px;
+
+  .titulo h1,
+  .titulo-pagina {
+    color: #64732f;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    
+    
+  }
+
+
+.titulo-pagina {
+    color: #64732f;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    
+     animation: zoomAnim 1s infinite alternate ease-in-out;
+
+  }
+
+/* Define a animação */
+@keyframes zoomAnim {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+
+  .banner-promocao {
+    background-color: #64732f;
+    border: 1px dashed #64732f;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 16px 0;
+    color: white;
+
+    .cupom {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+  }
+
+  .filtros {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .ordenar,
+    .visualizacao {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+
+      label {
+        font-weight: 500;
+        color: #64732f;
+      }
+    }
+  }
+
+  .produtos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    animation: fadeIn 0.6s ease;
+
+    &.lista {
+      display: block;
+
+      .produto-card {
+        margin-bottom: 12px;
+      }
+    }
+
+    .produto-card {
+      background: white;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.35s ease-in-out;
+
+      &:hover {
+        transform: scale(1.02);
+        border-color: #64732f;
+        box-shadow: 0 4px 12px rgba(100, 115, 47, 0.2);
+      }
+
+      ion-img {
+        display: block;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .produtos-container.lista .produto-card {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+      }
+
+      .produtos-container.lista .produto-card ion-img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 12px;
+      }
+
+      .imagem {
+        width: 90px;
+        height: 90px;
+        overflow: hidden;
+        border-radius: 10px;
+        background-color:#64732f;
+        margin-left: -8px; 
+        border: 3px solid #34401a;
+      }
+
+      .imagem ion-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      ion-card-header {
+        padding: 8px 12px;
+        background-color: #b4bf5e;
+
+        ion-card-title {
+          font-size: 18px;
+          font-weight: bold;
+          background-color: #b4bf5e;
+          text-align: center;
+        }
+
+        ion-card-title {
+           font-size: 1.2rem;
+  color: white;
+  text-shadow: 3px 3px 2px #252617;
+
+  animation: zoom-pequeno 3s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+        ion-card-subtitle {
+          font-size: 18px;
+          color: black;
+          text-align: center;
+        }
+      }
+
+      ion-card-content {
+        padding: 0 12px 12px;
+        font-size: 18px;
+        color: black;
+        text-align: center;
+      }
+
+      ion-button.botao-favoritos,
+      ion-button.botao-sacola {
+        margin: 4px auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        font-size: 13px;
+
+        span {
+          margin-left: 6px;
+          color: #64732f;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ion-item {
+  ion-thumbnail img {
+    object-fit: cover;
+    height: 100%;
+    
+  }
+
+  ion-label {
+    color: black;
+    text-align: center;
+  }
+
+  strong {
+    color: black;
+  }
+}
+
+.texto {
+   font-size: 16px;
+  color: white;
+  text-shadow: 3px 3px 2px #252617;
+
+  animation: zoom-pequeno 3s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+.conjunto {
+  background-color: #b4bf5e; /* ou outro verde que esteja usando */
+  padding: 8px;
+  border-radius: 8px;
+
+  margin-left: 20px; 
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* Botões de Modo Lista e Grade */
+.botoes-modo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.botoes-modo .botao-grade,
+.botoes-modo .botao-lista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botoes-modo ion-button {
+  --color: #64732f;
+  --border-radius: 50%;
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.botoes-modo ion-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(100, 115, 47, 0.1);
+}
+
+.botoes-modo ion-button.ativo {
+  background-color: #64732f;
+  color: white;
+}

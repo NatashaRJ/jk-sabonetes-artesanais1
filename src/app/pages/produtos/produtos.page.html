@@ -1,0 +1,166 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="Logo" />
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="irParaFavoritos()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="irParaSacola()">
+        <ion-icon name="bag-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="produtos-page">
+  <div class="titulo">
+    <h1>Produtos</h1>
+  </div>
+
+  <!-- Banner promocional -->
+  <div class="banner-promocao">
+    <p><strong>Você ganhou 10% OFF*</strong></p>
+    <small>*Válido em sua primeira compra realizada no app</small>
+    <span class="cupom">Use o cupom: <strong>PRIMEIRAAPP</strong></span>
+  </div>
+
+  <!-- Título da página -->
+  <h2 class="titulo-pagina">Todos os produtos</h2>
+
+  <!-- Filtros de ordenação e visualização -->
+  <div class="filtros">
+    <div class="ordenar">
+      <label>Ordenar por:</label>
+      <ion-select interface="popover" [(ngModel)]="filtroOrdenacao">
+        <ion-select-option value="relevancia">Relevância</ion-select-option>
+        <ion-select-option value="menor_preco">Menor Preço</ion-select-option>
+        <ion-select-option value="maior_preco">Maior Preço</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="visualizacao">
+      <label>Mostrar:</label>
+    <ion-buttons>
+ <div class="botoes-modo">
+  <div class="botao-grade">
+    <ion-button fill="clear" (click)="modoLista = false" [class.ativo]="!modoLista">
+      <ion-icon [name]="modoLista ? 'grid-outline' : 'grid'" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="botao-lista">
+    <ion-button fill="clear" (click)="modoLista = true" [class.ativo]="modoLista">
+      <ion-icon [name]="modoLista ? 'list' : 'list-outline'" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    </div>
+  </div>
+</ion-buttons>
+    </div>
+  </div>
+
+  <!-- Container de produtos -->
+  <div class="produtos-container" [ngClass]="{ 'lista': modoLista }">
+    <div class="produto-card" *ngFor="let produto of [
+    { id: 1, nome: 'Sabonete de Maracujá', categoria: 'Relaxante', valor: 10, imagem: '../../../assets/maracuja.jpeg' },
+    { id: 2, nome: 'Sabonete de Pitanga Preta', categoria: 'Hidratante', valor: 10, imagem: '../../../assets/pitanga1.jpeg' },
+    { id: 3, nome: 'Sabonete de Açafrão', categoria: 'Antioxidante', valor: 10, imagem: '../../../assets/acafrao7.jpeg' },
+    { id: 4, nome: 'Sabonete de Argila Branca', categoria: 'Clareador', valor: 12.90, imagem: '../../../assets/argilabranca1.jpg' },
+    { id: 5, nome: 'Sabonete de Dolomita', categoria: 'Clareador', valor: 13, imagem: '../../../assets/dolomita.jpeg' },
+    { id: 6, nome: 'Sabonete de Camomila', categoria: 'Calmante', valor: 10, imagem: '../../../assets/camomila1.jpg' },
+    { id: 7, nome: 'Sabonete de Alecrim', categoria: 'Revitalizante', valor: 12, imagem: '../../../assets/alecrim4.jpeg' },
+    { id: 8, nome: 'Sabonete de Rosas Brancas', categoria: 'Perfumado', valor: 10, imagem: '../../../assets/rosasbrancas.jpg' },
+    { id: 9, nome: 'Sabonete de Erva Doce', categoria: 'Refrescante', valor: 11, imagem: '../../../assets/ervadoce.jpeg' },
+    { id: 10, nome: 'Sabonete de Morango', categoria: 'Revitalizante', valor: 10, imagem: '../../../assets/morango3.jpeg' },
+    { id: 11, nome: 'Sabonete de Alecrim com Sal Grosso', categoria: 'Limpeza Energética', valor: 12.90, imagem: '../../../assets/alecrim.jpeg' },
+    { id: 12, nome: 'Sabonete de Maracujá com Semente', categoria: 'Esfoliante', valor: 12, imagem: '../../../assets/maracuja1.jpeg' },
+    { id: 13, nome: 'Sabonete de Açaí', categoria: 'Antioxidante', valor: 10, imagem: '../../../assets/acai.jpeg' },
+    { id: 14, nome: 'Sabonete de Café', categoria: 'Esfoliante', valor: 13, imagem: '../../../assets/cafe1.jpg' },
+    { id: 15, nome: 'Sabonete de Leite de Cabra', categoria: 'Nutritivo', valor: 10, imagem: '../../../assets/leitedecabra1.jpg' },
+    { id: 16, nome: 'Sabonete de Babosa', categoria: 'Hidratante', valor: 11, imagem: '../../../assets/aloevera.jpg' },
+    { id: 17, nome: 'Sabonete de Chá Verde', categoria: 'Detox', valor: 12, imagem: '../../../assets/chaverde.jpg' },
+    { id: 18, nome: 'Sabonete de Melancia', categoria: 'Refrescante', valor: 10, imagem: '../../../assets/melancia.jpg' },
+    { id: 19, nome: 'Sabonete de Coco', categoria: 'Hidratante', valor: 10, imagem: '../../../assets//coco.jpg' },
+    { id: 20, nome: 'Sabonete de Mel', categoria: 'Hidratante', valor: 12, imagem: '../../../assets/mel.jpg' },
+    { id: 21, nome: 'Sabonete de Jasmim', categoria: 'Perfumado', valor: 12, imagem: '../../../assets/jasmim2.jpg' },
+    { id: 22, nome: 'Sabonete de Eucalipto', categoria: 'Refrescante', valor: 10, imagem: '../../../assets/eucalipto.jpg' },
+
+  ] | ordenarPor:filtroOrdenacao">
+      <!-- VISUALIZAÇÃO EM GRADE -->
+      <ng-container *ngIf="!modoLista">
+        <ion-card [routerLink]="['/produto-detalhe']" [queryParams]="{
+            nome: produto.nome,
+            categoria: produto.categoria,
+            valor: produto.valor,
+            imagem: produto.imagem
+          }">
+          <ion-img [src]="produto.imagem" [alt]="'Sabonete de ' + produto.nome"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{ produto.nome }}</ion-card-title>
+            <br>
+            <ion-card-content>{{ produto.categoria }}</ion-card-content>
+            <ion-card-subtitle>R$ {{ produto.valor | number:'1.2-2' }}</ion-card-subtitle>
+           
+          </ion-card-header>
+        </ion-card>
+      </ng-container>
+
+      <!-- VISUALIZAÇÃO EM LISTA -->
+      <ng-container *ngIf="modoLista">
+        <ion-item
+        button detail="false" lines="full" [routerLink]="['/produto-detalhe']"
+        [queryParams]="{
+           nome: produto.nome,
+            categoria: produto.categoria,
+            valor: produto.valor,
+            imagem: produto.imagem
+        }">
+        
+          <ion-thumbnail slot="start">
+            <div class="imagem">
+              <ion-img [src]="produto.imagem"></ion-img>
+            </div>
+          </ion-thumbnail>
+
+          <ion-label>
+            <div class="conjunto">
+              <div class="texto">
+              <h2>{{ produto.nome }}</h2>
+            </div>
+            <p>{{ produto.categoria }}</p>
+              <strong>R$ {{ produto.valor | number:'1.2-2' }}</strong>
+            
+           
+            </div>
+          </ion-label>
+
+        
+        </ion-item>
+      </ng-container>
+
+      <!-- Botões de ação -->
+      <ion-button fill="clear" class="botao-favoritos" (click)="toggleFavorito(produto)">
+        <ion-icon slot="start" [name]="isFavorito(produto) ? 'heart' : 'heart-outline'"
+          [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+        <span style="margin-left: 4px; font-weight: 500; color: var(--ion-color-musgo);">
+          FAVORITOS
+        </span>
+      </ion-button>
+
+      <ion-button fill="clear" class="botao-sacola" (click)="toggleSacola(produto)">
+        <ion-icon slot="start" [name]="isNaSacola(produto) ? 'bag' : 'bag-outline'"
+          [style.color]="'var(--ion-color-musgo)'" style="font-size: 22px"></ion-icon>
+        <span style="margin-left: 4px; font-weight: 500; color: var(--ion-color-musgo);">
+          SACOLA
+        </span>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

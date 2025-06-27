@@ -1,0 +1,148 @@
+/* ========= TÍTULO ========= */
+h1 {
+  text-align: center;
+  color: #64732f;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/* ========= CONTEÚDO ========= */
+ion-content {
+  background: #fff;
+  padding: 16px;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
+}
+
+/* ========= LOGO 3D ========= */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+/* ========= LISTA DE AVALIAÇÕES ========= */
+ion-list {
+  margin-top: 20px;
+  animation: fadeInDown 0.7s ease;
+}
+ion-item {
+  --background: #b4bf5e;
+  border-radius: 12px;
+  margin: 12px 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #cad959;
+  animation: fadeInUp 0.6s ease forwards;
+}
+ion-item:hover {
+  transform: rotateY(3deg) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* ========= ESTRELAS ========= */
+.avaliacao ion-icon {
+  font-size: 1.5em;
+  margin-right: 4px;
+  color: #cad959;
+  transition: transform 0.3s ease;
+}
+.avaliacao ion-icon:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* ========= BOTÃO DE LIXEIRA ========= */
+.btn-trash {
+  --background: rgb(220, 29, 29); /* 🔥 Vermelho claro */
+  --color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+.btn-trash:hover {
+  transform: scale(1.1);
+}
+
+/* ========= FORMULÁRIO DE COMENTÁRIO ========= */
+ion-item {
+  --background: #b4bf5e;
+  border-radius: 12px;
+  margin: 16px 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  border-left: 5px solid #cad959;
+  animation: fadeInUp 0.8s ease;
+}
+
+ion-label {
+  color: #34401a;
+  margin-bottom: 6px;
+}
+
+ion-input {
+  color: #252617;
+  margin-top: 8px;
+}
+
+/* 🔥 Espaçamento para separar o label e o input */
+ion-item ion-label {
+  margin-bottom: 8px;
+}
+
+/* ========= BOTÃO DE ENVIAR ========= */
+ion-button {
+  display: block;
+  margin: 16px auto;
+  width: 80%;
+  --background: #64732f;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: bold;
+  animation: fadeInUp 1s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ion-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* ========= CORES DE TEXTO ========= */
+h2, ion-label h2 {
+  color: #34401a;
+}
+p, ion-label p, ion-input::part(native) {
+  color: #252617;
+}
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0);      opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0)       rotateX(0); }
+}

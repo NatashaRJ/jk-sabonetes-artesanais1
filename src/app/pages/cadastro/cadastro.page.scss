@@ -1,0 +1,142 @@
+/* ========= CONTEÚDO PRINCIPAL ========= */
+ion-content[fullscreen] {
+  background: #fff;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
+  padding: 16px;
+}
+
+/* ========= LOGO 3D ========= */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+/* ========= TÍTULO ========= */
+.titulo {
+  text-align: center;
+  margin-top: 80px;
+  animation: fadeInDown 0.7s ease;
+}
+.titulo h1 {
+  font-size: 2rem;
+  color: #64732f; /* musgo */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ========= FORMULÁRIO DE CADASTRO ========= */
+form {
+  animation: fadeInUp 0.8s ease;
+}
+
+form ion-item {
+  --background: #b4bf5e; /* oliva-claro */
+  border-radius: 12px;
+  margin: 16px 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #cad959; /* limão-queimado */
+}
+form ion-item:hover {
+  transform: rotateY(2deg) scale(1.01);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* Labels e Inputs */
+form ion-label {
+  color: #34401a; /* oliva-escura */
+  font-weight: 500;
+}
+form ion-input {
+  color: #252617; /* militar */
+}
+
+/* Botões de mostrar/ocultar senha */
+form ion-button[fill="clear"] {
+  --color: #34401a;
+  transition: transform 0.3s ease;
+}
+form ion-button[fill="clear"]:hover {
+  transform: scale(1.2) rotate(10deg);
+  --color: #64732f;
+}
+
+/* Botão de Cadastrar */
+form ion-button[type="submit"] {
+  display: block;
+  margin: 24px auto;
+  width: 80%;
+  --background: #34401a; /* musgo */
+  color: #fff;
+  border-radius: 12px;
+  font-weight: bold;
+  animation: fadeInUp 1s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form ion-button[type="submit"]:hover:not([disabled]) {
+  transform: scale(1.05); /* Zoom pequeno */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+form ion-button[type="submit"][disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes pulseZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03); /* Zoom leve no meio */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+/* Mensagem de feedback */
+ion-text {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 1rem;
+  animation: fadeIn 0.8s ease;
+}
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0);      opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0)   rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0)    rotateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0)       rotateX(0); }
+}

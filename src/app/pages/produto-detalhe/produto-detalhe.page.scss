@@ -1,0 +1,250 @@
+/* ========= CONTEÚDO PRINCIPAL ========= */
+ion-content {
+  background: #fff;
+  padding: 16px;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
+}
+
+/* ========= LOGO 3D ========= */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+/* ========= CARD DO PRODUTO ========= */
+.produto-card {
+  background: #b4bf5e;          /* oliva-claro */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+.produto-card:hover {
+  transform: rotateY(3deg) scale(1.02);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.25);
+}
+.produto-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ========= TÍTULOS ========= */
+ion-card-title {
+     font-size: 1.2rem;
+  color: white;
+  text-shadow: 3px 3px 2px #252617;
+
+  animation: zoom-pequeno 3s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+.card-sub-com-acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-sub-com-acoes ion-buttons {
+  display: flex;
+  gap: 8px;
+}
+.card-sub-com-acoes ion-button ion-icon {
+  color: #34401a;           /* musgo */
+  transition: transform 0.3s ease;
+}
+.card-sub-com-acoes ion-button ion-icon:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* ========= AVALIAÇÕES ========= */
+.avaliacoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+  animation: fadeIn 0.6s ease;
+}
+.avaliacoes ion-icon {
+  font-size: 1.4em;
+  color: #252617;           /* limão-queimado */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.avaliacoes ion-icon:hover {
+  transform: scale(1.2) rotate(-5deg);
+}
+.avaliacoes a {
+  margin-left: 12px;
+  color: #34401a;
+  text-decoration: none;
+  font-weight: 500;
+}
+.avaliacoes a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ========= ACORDÉON ========= */
+ion-accordion {
+  margin-top: 16px;
+  animation: fadeInUp 1s ease;
+}
+ion-accordion ion-item {
+  --background: #b4bf5e;
+  border-left: 5px solid #cad959;
+}
+ion-accordion-group .ion-padding {
+  background: #fff;
+  color: #252617;           /* militar */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+
+
+.footer-sacola {
+  margin-top: 20px; /* separa da seção de benefícios */
+  background: linear-gradient(145deg, #556B2F, #4B5320);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 16px;
+  padding-bottom: 70px; /* espaçamento extra embaixo */
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-sacola:hover {
+  transform: translateY(-5px);
+}
+
+.footer-sacola ion-toolbar {
+  background: transparent;
+}
+
+.footer-sacola ion-item {
+  background: linear-gradient(135deg, #8A9A5B, #CDE0A3);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  margin-top: 20px; /* aumenta o espaço superior */
+  animation: pulseItem 2s infinite;
+}
+
+.footer-sacola ion-button {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+}
+
+.footer-sacola ion-button[color="musgo"] {
+  background: linear-gradient(135deg, #8A9A5B, #BFCF3B);
+  color: white;
+}
+
+.footer-sacola ion-button[color="danger"] {
+  background: linear-gradient(135deg, #BFCF3B, #556B2F);
+  color: white;
+}
+
+.footer-sacola ion-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.footer-sacola ion-icon {
+  color: #34401a;
+  transition: transform 0.3s ease;
+}
+
+.footer-sacola ion-button:hover ion-icon {
+  transform: rotate(20deg);
+}
+
+@keyframes pulseItem {
+  0% {
+    box-shadow: 0 0 0 0 rgba(186, 204, 89, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(186, 204, 89, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(186, 204, 89, 0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ========= TEXTOS E ÍCONES ========= */
+.titulo h1 {
+  font-size: 2rem;
+  color: #64732f;           /* musgo */
+  text-align: center;
+  margin: 20px 0;
+  animation: fadeInDown 0.7s ease;
+}
+ion-label, ion-card-subtitle, ion-card-content p {
+  color: #252617;           /* militar */
+}
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0);       opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0)    rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0)   rotateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0)        rotateX(0); }
+}

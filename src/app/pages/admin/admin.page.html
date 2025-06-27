@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="JK Sabonetes Artesanais" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="logout()" fill="clear" aria-label="Sair da conta">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h1>Área <br> Administrativa</h1>
+
+  <!-- 🔸 Seção de Usuários -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Usuários</ion-card-title>
+    </ion-card-header>
+
+    <form [formGroup]="usuarioForm" (ngSubmit)="salvarUsuario()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input formControlName="nome" autocomplete="name"></ion-input>
+      </ion-item>
+      <ion-text color="warning" *ngIf="usuarioForm.get('nome')?.invalid && usuarioForm.get('nome')?.touched">
+        Nome é obrigatório.
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email" autocomplete="email"></ion-input>
+      </ion-item>
+      <ion-text color="warning" *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+        Email inválido.
+      </ion-text>
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select formControlName="tipo">
+          <ion-select-option value="comum">Comum</ion-select-option>
+          <ion-select-option value="master">Master</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+     <div class="botao">
+  <ion-button  type="submit"  [disabled]="usuarioForm.invalid">
+    <span *ngIf="editandoUsuario">✔️ Atualizar Usuário</span>
+    <span *ngIf="!editandoUsuario">👍 Adicionar Usuário</span>
+  </ion-button>
+</div>
+
+    </form>
+
+    <ion-list>
+      <ion-item *ngFor="let u of usuarios">
+        <ion-label>
+          <h2>{{ u.nome }} ({{ u.tipo }})</h2>
+          <p>{{ u.email }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button color="primary" (click)="editarUsuario(u)" [attr.aria-label]="'Editar usuário ' + u.nome">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+
+          <ion-button color="danger" (click)="excluirUsuario(u)" [attr.aria-label]="'Excluir usuário ' + u.nome">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <!-- 🔸 Seção de Produtos -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Produtos</ion-card-title>
+    </ion-card-header>
+
+    <form [formGroup]="produtoForm" (ngSubmit)="salvarProduto()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input formControlName="nome" autocomplete="off"></ion-input>
+      </ion-item>
+      <ion-text color="warning" *ngIf="produtoForm.get('nome')?.invalid && produtoForm.get('nome')?.touched">
+        Nome é obrigatório.
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Valor</ion-label>
+        <ion-input formControlName="valor" type="number" min="0" autocomplete="off"></ion-input>
+      </ion-item>
+      <ion-text color="warning" *ngIf="produtoForm.get('valor')?.invalid && produtoForm.get('valor')?.touched">
+        Valor inválido.
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-input formControlName="categoria" autocomplete="off"></ion-input>
+      </ion-item>
+      <ion-text color="warning" *ngIf="produtoForm.get('categoria')?.invalid && produtoForm.get('categoria')?.touched">
+        Categoria é obrigatória.
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Benefício</ion-label>
+        <ion-textarea formControlName="beneficio"></ion-textarea>
+      </ion-item>
+      <ion-text color="warning" *ngIf="produtoForm.get('beneficio')?.invalid && produtoForm.get('beneficio')?.touched">
+        Benefício é obrigatório.
+      </ion-text>
+
+      <!-- 🔥 Upload de imagem com botão -->
+      <ion-item>
+        <ion-label>Imagem</ion-label>
+        <ion-button expand="block" (click)="fileInput.click()">
+          Selecionar Imagem
+        </ion-button>
+        <input 
+          type="file" 
+          hidden 
+          #fileInput 
+          (change)="uploadImagem($event)" 
+          accept="image/*" 
+        />
+      </ion-item>
+
+      <!-- 🔸 Preview da imagem -->
+      <ion-item *ngIf="imagemPreview">
+        <ion-label>Pré-visualização:</ion-label>
+        <ion-thumbnail slot="start">
+          <img 
+            [src]="imagemPreview" 
+            style="max-width: 100px; max-height: 100px; border-radius: 6px;" 
+          />
+        </ion-thumbnail>
+      </ion-item>
+<div class="botao">
+  <ion-button type="submit" [disabled]="produtoForm.invalid">
+    <span *ngIf="editandoProduto">✔️ Atualizar Produto</span>
+    <span *ngIf="!editandoProduto">👍 Adicionar Produto</span>
+  </ion-button>
+</div>
+    </form>
+
+    <ion-list>
+      <ion-item *ngFor="let p of produtos">
+        <ion-thumbnail slot="start" *ngIf="p.imagem; else semImagem">
+         <img [src]="p.imagem || '../../../assets/sem.imagem.png'"  (error)="onImageError($event)" 
+          alt="Imagem do produto"> 
+       </ion-thumbnail>
+        <ng-template #semImagem>
+          <ion-thumbnail slot="start">
+            <ion-icon name="image-outline" style="font-size: 40px; color: gray;"></ion-icon>
+          </ion-thumbnail>
+        </ng-template>
+        <div class="info-produto">
+          <ion-label>
+            <h2>{{ p.nome }} -<br>{{ p.categoria }}</h2>
+            <p>{{ p.beneficio }}<br>R$ {{ p.valor }}</p>
+          </ion-label>
+        </div>
+        <ion-buttons slot="end">
+          <ion-button color="primary" (click)="editarProduto(p)" [attr.aria-label]="'Editar produto ' + p.nome">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" (click)="excluirProduto(p)" [attr.aria-label]="'Excluir produto ' + p.nome">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

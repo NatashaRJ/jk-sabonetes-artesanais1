@@ -1,0 +1,219 @@
+/* ========= GERAL ========= */
+ion-content {
+  background: #fff;
+  padding: 16px;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
+}
+
+/* ========= HEADER & LOGO 3D ========= */
+ion-header {
+  --background: #fff;
+}
+ion-toolbar {
+  position: relative;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: 56px;
+}
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+ion-buttons[slot="end"] {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 12px;
+}
+ion-buttons[slot="end"] ion-icon {
+  font-size: 30px;
+  color: #34401a; /* oliva-escura */
+  transition: transform 0.3s ease;
+  gap:8px;
+}
+ion-buttons[slot="end"] ion-icon:hover {
+  transform: scale(1.2);
+}
+
+/* ========= SEARCHBAR ========= */
+ion-searchbar {
+  margin-bottom: 16px;
+  --background: #b4bf5e;      /* oliva-claro */
+  --placeholder-color: white; /* militar */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px #86877a;
+
+  /* Estado inicial normal */
+  transform: scale(1);
+  
+  /* Animação contínua de zoom */
+  animation: infiniteZoom 6s ease-in-out infinite;
+}
+
+@keyframes infiniteZoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* aumenta 10% */
+  }
+  100% {
+    transform: scale(1); /* volta ao tamanho normal */
+  }
+}
+
+
+
+
+
+
+
+
+/* ========= GRID DE PRODUTOS ========= */
+ion-grid {
+  animation: fadeIn 0.8s ease;
+}
+ion-card {
+  background: #b4bf5e; /* oliva-claro */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+ion-card:hover {
+  transform: rotateY(3deg) scale(1.02);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.25);
+}
+ion-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+ion-card-header {
+  padding: 12px;
+}
+
+
+
+ion-card-title {
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 3px 3px 2px #252617;
+
+  animation: zoom-pequeno 3s infinite alternate; /* duração aumentada para 3s */
+  text-align: center;
+
+}
+
+@keyframes zoom-pequeno {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* zoom mais leve, 5% maior */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ion-card-subtitle {
+  font-size: 1rem;
+  color: #252617; /* militar */
+  text-align: center;
+}
+ion-card-content {
+  font-size: 0.95rem;
+  color: #252617; /* militar */
+  padding: 0 12px 12px;
+  text-align: center;
+}
+
+/* ========= BOTOES FAVORITOS & SACOLA ========= */
+.botao-favoritos,
+.botao-sacola {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 8px 0;
+  --background: transparent;
+  --color: #64732f; /* musgo */
+  font-weight: bold;
+  transition: color 0.3s ease;
+  animation: fadeInUp 0.9s ease forwards;
+}
+.botao-favoritos ion-icon,
+.botao-sacola ion-icon {
+  font-size: 22px;
+  margin-right: 4px;
+  color: #64732f; /* musgo */
+  transition: transform 0.3s ease;
+}
+.botao-favoritos:hover ion-icon,
+.botao-sacola:hover ion-icon {
+  transform: scale(1.2);
+}
+.botao-favoritos:hover,
+.botao-sacola:hover {
+  color: #cad959; /* limão-queimado */
+}
+
+/* ========= BADGE SACOLA ========= */
+ion-badge.sacola-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  --background: #cad959; /* limão-queimado */
+  color: #34401a;         /* oliva-escura */
+  font-size: 0.7rem;
+}
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0);      opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0)    rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0)    rotateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0)       rotateX(0); }
+}

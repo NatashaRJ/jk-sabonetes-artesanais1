@@ -1,0 +1,188 @@
+/* ========= GERAL ========= */
+ion-content {
+  background: #fff;
+  padding: 16px;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
+}
+
+/* ========= LOGO 3D ========= */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+}
+
+/* ========= TÍTULO PRINCIPAL ========= */
+.titulo {
+  text-align: center;
+  margin-top: 80px;
+  animation: fadeInDown 0.7s ease;
+}
+.titulo h1 {
+  font-size: 2rem;
+  color: #64732f; /* musgo */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ========= CARDS ========= */
+ion-card {
+  background: #b4bf5e; /* oliva-claro */
+  border-radius: 14px;
+  margin: 20px 0;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+ion-card:hover {
+  transform: rotateY(3deg) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+}
+
+/* ========= TITULOS ========= */
+ion-card-title {
+  font-size: 1.3rem;
+  color: #64732f; /* oliva-escura */
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin-bottom: 8px;
+}
+
+/* ========= CONTEÚDO DE CONTATO ========= */
+ion-card-content p,
+ion-card-content a {
+  font-size: 1rem;
+  color: #252617; /* militar */
+  line-height: 1.5;
+  text-align: center;
+}
+
+ion-card-content a {
+  font-size: 1rem;
+  color: #252617; /* militar */
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+
+
+
+ion-item[lines="none"] {
+  --background: transparent;
+  margin: 8px 0;
+  --inner-border-width: 0;
+  display: flex;
+  align-items: center;
+  animation: fadeIn 1s ease;
+}
+ion-item[lines="none"] ion-icon {
+  font-size: 24px;
+  color: #64732f; /* limão-queimado */
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+}
+ion-item[lines="none"] ion-icon:hover {
+  transform: scale(1.2) rotate(8deg);
+}
+ion-item[lines="none"] a {
+  color: #64732f; /* oliva-escura */
+  text-decoration: none;
+}
+ion-item[lines="none"] a:hover {
+  color: #fff; /* musgo */
+  text-decoration: underline;
+}
+
+/* ========= FORMULÁRIO ========= */
+form ion-item {
+  --background: #b4bf5e;
+  border-radius: 12px;
+  margin: 12px 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease forwards;
+  border-left: 5px solid #cad959;
+}
+form ion-item:hover {
+  transform: rotateY(2deg) scale(1.01);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+
+ion-label {
+  color: #64732f;
+  font-weight: bold;
+
+  /* Efeito 3D com múltiplas sombras */
+  text-shadow: 
+    1px 1px 0 #64732f,
+    2px 2px 0 white,
+    3px 3px 0 #64732f;
+
+  /* Para dar uma sensação de perspectiva */
+  transform: perspective(300px) rotateX(5deg);
+}
+
+
+
+
+
+form ion-input,
+form ion-textarea {
+  color: #252617;
+}
+
+/* ========= BOTÃO ENVIAR ========= */
+form ion-button[type="submit"] {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  --background: #64732f; /* musgo */
+  color: #fff;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1.2s ease;
+}
+form ion-button[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.envia {
+  color: #64732f;
+}
+
+
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0);     opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0) rotateX(0); }
+}

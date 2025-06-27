@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+
+    </ion-buttons>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="JK Sabonetes Artesanais" />
+    </ion-title>
+
+     <ion-buttons slot="end">
+      <ion-button (click)="irParaSacola()">
+        <ion-icon name="bag-outline"></ion-icon>
+      </ion-button>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <h1>Favoritos</h1>
+  </div>
+
+  <!-- Seletor de ordenação -->
+  <ion-item>
+    <ion-label>Ordenar por</ion-label>
+    <ion-select [(ngModel)]="ordenacao" (ionChange)="ordenarFavoritos()">
+      <ion-select-option value="preco">Preço</ion-select-option>
+      <ion-select-option value="data">Data de Adição</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list *ngIf="lista.length > 0; else vazio">
+    <ion-item *ngFor="let item of lista">
+      <ion-thumbnail slot="start">
+        <img [src]="item.imagem" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.nome }}</h2>
+        <BR>
+        <p>{{ item.categoria }}</p>
+        <p>R$ {{ item.valor | number: '1.2-2' }}</p>
+      </ion-label>
+      <ion-button fill="clear" color="danger" (click)="remover(item)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #vazio>
+    <ion-text color="medium" class="ion-padding">
+      <p>Nenhum produto favorito ainda 😢</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

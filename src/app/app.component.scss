@@ -1,119 +1,245 @@
-ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+/* ========= CONTEÚDO PRINCIPAL ========= */
+ion-content {
+  background: #fff;
+  padding: 16px;
+  animation: slideFadeIn 1s ease;
+  transform-style: preserve-3d;
 }
 
-ion-menu.md ion-content {
-  --padding-start: 8px;
-  --padding-end: 8px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+/* ========= LOGO 3D ========= */
+.logo-titulo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 800px;
+}
+.logo-titulo img {
+  height: 50px;
+  width: auto;
+  animation: girarLogo 1s ease-in-out;
+  
 }
 
-ion-menu.md ion-list {
-  padding: 20px 0;
+/* ========= CARD DO PRODUTO ========= */
+.produto-card {
+  background: #B4BF5E; /* oliva claro */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+.produto-card:hover {
+  transform: rotateY(5deg) scale(1.05);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.25);
+}
+.produto-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-ion-menu.md ion-note {
-  margin-bottom: 30px;
+/* ========= TÍTULOS ========= */
+ion-card-title {
+  font-size: 1.4rem;
+  color: #34401A; /* oliva escura */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+.card-sub-com-acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-sub-com-acoes ion-buttons {
+  display: flex;
+  gap: 8px;
+}
+.card-sub-com-acoes ion-button ion-icon {
+  color: #64732F; /* musgo */
+  transition: transform 0.3s ease;
+}
+.card-sub-com-acoes ion-button ion-icon:hover {
+  transform: scale(1.2) rotate(10deg);
 }
 
-ion-menu.md ion-list-header,
-ion-menu.md ion-note {
-  padding-left: 10px;
+/* ========= AVALIAÇÕES ========= */
+.avaliacoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 12px 0;
+  animation: fadeIn 0.6s ease;
 }
-
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
+.avaliacoes ion-icon {
+  font-size: 1.4em;
+  color: #CAD959; /* limão queimado */
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-
-ion-menu.md ion-list#inbox-list ion-list-header {
-  font-size: 22px;
-  font-weight: 600;
-
-  min-height: 20px;
+.avaliacoes ion-icon:hover {
+  transform: scale(1.2) rotate(-5deg);
 }
-
-ion-menu.md ion-list#labels-list ion-list-header {
-  font-size: 16px;
-
-  margin-bottom: 18px;
-
-  color: #757575;
-
-  min-height: 26px;
-}
-
-ion-menu.md ion-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 4px;
-}
-
-ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
-}
-
-ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
-}
-
-ion-menu.md ion-item ion-icon {
-  color: #616e7e;
-}
-
-ion-menu.md ion-item ion-label {
+.avaliacoes a {
+  margin-left: 12px;
+  color: #34401A;
+  text-decoration: none;
   font-weight: 500;
 }
-
-ion-menu.ios ion-content {
-  --padding-bottom: 20px;
+.avaliacoes a:hover {
+  color: #64732F;
+  text-decoration: underline;
 }
 
-ion-menu.ios ion-list {
-  padding: 20px 0 0 0;
+/* ========= ACORDÉON ========= */
+ion-accordion {
+  margin-top: 16px;
+  animation: fadeInUp 1s ease;
+}
+ion-accordion ion-item {
+  --background: #B4BF5E;
+  border-left: 5px solid #CAD959;
+}
+ion-accordion-group .ion-padding {
+  background: #fff;
+  color: #252617; /* militar */
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-ion-menu.ios ion-note {
-  line-height: 24px;
-  margin-bottom: 20px;
+/* ========= FOOTER DA SACOLA ========= */
+.footer-sacola ion-toolbar {
+  background: #64732F; /* musgo */
+}
+.footer-sacola ion-item {
+  --background: transparent;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-sacola ion-buttons ion-button {
+  --background: #34401A; /* oliva escura */
+  color: #fff;
+}
+.footer-sacola ion-button[color="musgo"] {
+  --background: #64732F;
+}
+.footer-sacola ion-button[color="danger"] {
+  --background: #CAD959;
 }
 
-ion-menu.ios ion-item {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --min-height: 50px;
+/* ========= TEXTOS E ÍCONES ========= */
+.titulo h1 {
+  font-size: 2rem;
+  color: #64732F; /* musgo */
+  text-align: center;
+  margin: 20px 0;
+  animation: fadeInDown 0.7s ease;
+}
+ion-label, ion-card-subtitle, ion-card-content p {
+  color: #252617; /* militar */
 }
 
-ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+/* ========= SPLASH FAKE ========= */
+.fake-splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease-in-out forwards;
+  animation-delay: 2.5s;
 }
-
-ion-menu.ios ion-item ion-icon {
+.fake-splash img {
+  width: 180px; height: 180px;
+  object-fit: contain;
+  animation: zoomIn 2.5s ease forwards;
+}
+.fake-splash-texto {
+  margin-top: 20px;
   font-size: 24px;
-  color: #73849a;
+  font-weight: bold;
+  color: #34401A; /* oliva escura */
+  opacity: 0;
+  animation: fadeZoomIn 2s ease forwards;
+  animation-delay: 0.5s;
 }
 
-ion-menu.ios ion-list#labels-list ion-list-header {
-  margin-bottom: 8px;
+/* ========= MENU ========= */
+ion-menu {
+  --background: #34401A; /* oliva escura */
+  color: white;
+  /* Espaçamento topo respeitando notch/status bar */
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
 }
 
-ion-menu.ios ion-list-header,
-ion-menu.ios ion-note {
-  padding-left: 16px;
-  padding-right: 16px;
+ion-menu ion-item {
+  --background: transparent;
+  color: black;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-ion-menu.ios ion-note {
-  margin-bottom: 8px;
+ion-menu ion-item:hover {
+  background: #64732F; /* musgo */
+  transform: translateX(5px) rotateY(3deg);
 }
 
-ion-note {
-  display: inline-block;
-  font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
+ion-menu ion-icon {
+  color: #B4BF5E; 
+  margin-right: 8px;
 }
 
-ion-item.selected {
-  --color: var(--ion-color-primary);
+ion-menu .titulo {
+  background-color: #64732F;
+  color: white;
+}
+
+/* ========= AJUSTE HEADER DO MENU ========= */
+ion-menu ion-header {
+  padding-top: calc(env(safe-area-inset-top) + 10px);
+  box-sizing: border-box;
+}
+
+
+
+
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes girarLogo {
+  from { transform: rotateY(-90deg); opacity: 0; }
+  to   { transform: rotateY(0); opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px) rotateX(-10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px) rotateX(10deg); }
+  to   { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateZ(-50px) rotateX(5deg); }
+  to   { opacity: 1; transform: translateZ(0) rotateX(0); }
+}
+@keyframes zoomIn {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1.6); opacity: 1; }
+}
+@keyframes fadeZoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
 }

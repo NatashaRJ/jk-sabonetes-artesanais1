@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="logo-titulo">
+      <img src="../../../assets/logo.svg" alt="JK Sabonetes Artesanais" />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="currentUser" class="status-container">
+    <span 
+      class="status-bubble" 
+      [class.online]="userOnline" 
+      [class.offline]="!userOnline"
+      title="{{userOnline ? 'Online' : 'Offline'}}">
+    </span>
+    {{ currentUser.email }}
+  </div>
+
+  <div class="titulo">
+    <h1>Meu Perfil</h1>
+  </div>
+
+  <!-- Foto de perfil circular -->
+  <div class="foto-container">
+    <img [src]="fotoUrl || 'assets/avatar-placeholder.png'" alt="Foto de perfil" class="foto-circular texto-centralizado"/>
+  </div>
+
+ <!-- Campo de seleção de imagem que abre a galeria ou câmera no mobile -->
+<div class="input-foto">
+  <input
+    type="file"
+    (change)="onFotoSelecionada($event)"
+    accept="image/*"
+    capture="environment"
+  />
+</div>
+
+  <!-- DADOS DO USUÁRIO SALVOS -->
+  <div class="dados-usuario">
+    <ion-label>
+      <strong>Nome:</strong> {{ usuario.nome || 'Não informado' }}
+    </ion-label><br />
+    <ion-label>
+      <strong>E-mail:</strong> {{ usuario.email || 'Não informado' }}
+    </ion-label>
+  </div>
+
+  <!-- Formulário para edição -->
+  <form (ngSubmit)="salvarPerfil()">
+    <ion-item>
+      <ion-label position="floating">Editar Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="usuario.nome" name="nome" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Editar E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.email" name="e-mail" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Salvar</ion-button>
+    
+    <div class="sai">
+      <ion-button (click)="sair()">Sair da Conta</ion-button>
+    </div>
+  </form>
+</ion-content>
